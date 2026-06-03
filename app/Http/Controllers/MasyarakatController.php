@@ -33,6 +33,15 @@ class MasyarakatController extends Controller
         return redirect('/masyarakat')->with('success', 'Data berhasil ditambahkan');
     }
 
+    public function show(Masyarakat $masyarakat)
+    {
+        $masyarakat = Masyarakat::with('keluhans')
+        ->where('id', $masyarakat->id)
+        ->first();
+
+        return $masyarakat;
+    }
+
     public function edit($id)
     {
         $masyarakat = Masyarakat::findOrFail($id);

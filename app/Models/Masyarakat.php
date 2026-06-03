@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Masyarakat extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'nama',
@@ -15,4 +16,9 @@ class Masyarakat extends Model
         'jenis_kelamin',
         'alamat'
     ];
+
+    public function keluhans()
+    {
+        return $this->hasMany(Keluhan::class, 'masyarakat_id');
+    }
 }
